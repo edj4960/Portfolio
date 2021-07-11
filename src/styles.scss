@@ -6,20 +6,31 @@
 .text-muted     { color: $MUTED !important }
 .text-light     { color: $LIGHT !important }
 
-.text-xlg { font-size: 86px; }
+.text-xlg { font-size: 96px; }
+.text-lg { font-size: 80px;}
 
-.font-primary { font-family: var(--font-sans);}
+.font-title { 
+    font-family: 'Mr Dafoe', cursive; 
+    letter-spacing: 10px;
+}
+.font-primary { font-family: 'Open Sans';}
 
 .bkgd-primary   { background-color: $PRIMARY !important }
 .bkgd-secondary { background-color: $SECONDARY !important }
 .bkgd-dark      { background-color: $DARK !important }
 .bkgd-muted     { background-color: $MUTED !important;}
 
-html {
-    background-color: $DARK;
+html, #root {
+    // background-color: $DARK;
+    ::-webkit-scrollbar {display:none;}
 }
 
 .app {
     @extend .font-primary;
-    margin: 0 100px;
+    // margin: 0 100px;
+    // width: 100%;
+}
+
+.content {
+    background: linear-gradient(185.04deg, #F4DCDC 20.58%, rgba(235, 87, 87, 0) 95.94%);
 }

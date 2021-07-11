@@ -1,0 +1,28 @@
+@import 'src/variables';
+
+.intro-pg {
+    position: fixed;
+    overflow: hidden;
+    height: 100vh;
+    > div {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        > h1 {
+            text-shadow: 12px 5px 4px $MUTED;
+            
+            animation: fadeIn ease 4s;
+        }
+        > h4 {
+            animation-delay: 4s;
+            animation: fadeIn ease 6s;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
