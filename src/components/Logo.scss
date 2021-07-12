@@ -1,0 +1,68 @@
+@import './src/variables';
+
+#logo {
+    position: absolute;
+    left: 0;
+    margin-left: 35px;
+    cursor: pointer;
+
+    // &.hide {
+    //     // animation-fill-mode: forwards;
+    //     // animation: fadeOutRight ease .25s;
+    //     // opacity: 0;
+    // }
+
+    &:hover {
+        #E {
+            fill: #6FCF97
+        }
+        #J {
+            fill: $DARK;
+        }
+    }
+
+    #E {
+        opacity: 0;
+        fill: $DARK;
+        transition: all ease 1s;
+        animation: fadeInFromRight ease .25s;
+        // animation-delay: .5s;
+        animation-fill-mode: forwards;
+    }
+    #J {
+        opacity: 0;
+        transition: all ease 1s;
+        fill: #6FCF97;
+        animation: fadeInFromRight ease .25s;
+        animation-delay: .25s;
+        animation-fill-mode: forwards;
+    }
+
+    // .show {
+    //     #E {
+    //         animation: fadeOutRight ease .25s;
+    //     }
+    // }
+}
+
+@keyframes fadeInFromRight {
+    0% {
+        transform: translateX(1px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(1px);
+        opacity: 0;
+    }
+}

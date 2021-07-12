@@ -4,6 +4,8 @@ import { NAV_BAR_HEIGHT,
         NAV_BAR_ANIMATION_DELAY, 
         NAV_BAR_ITEMS_ANIMATION_DELAY } from '../Constants';
 
+import Logo from './Logo';
+
 import './NavBar.scss'
 
 const NavBar = () => {
@@ -36,7 +38,7 @@ const NavBar = () => {
 
     // Animations
     useEffect(() => {
-        runShowNavBar();
+        handleScroll();
     }, []);
 
     const transitionToSticky = () => {
@@ -78,6 +80,7 @@ const NavBar = () => {
         className={sticky&&'sticky'}
     >
         <div className={`nav-items ${showNavBar&&'show'}`}>
+            {sticky&&<Logo />}
             <div className={`nav-item ${showNavItems&&'show'}`}>About Me</div>
             <div className={`nav-item ${showNavItems&&'show'}`}>My Work</div>
             <div className={`nav-item ${showNavItems&&'show'}`}>Experience</div>

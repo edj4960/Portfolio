@@ -17,7 +17,11 @@
         left: 0;
         width: 100%;
         .nav-items {
+            padding: 0 20px;
             background: white;
+            justify-content: flex-end;
+            align-items: flex-end;
+            height: 60px;
         }
     }
     
@@ -45,7 +49,7 @@
             }
         }
         
-        @for $i from 1 through 4 {
+        @for $i from 2 through 5 {
             .nav-item:nth-child(#{$i}n) {
                 transition-delay: #{$i * .1}s;
             }
