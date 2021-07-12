@@ -1,28 +1,20 @@
 @import 'src/variables';
 
 .intro-pg {
-    position: fixed;
-    overflow: hidden;
-    height: 100vh;
-    > div {
-        background-color: white;
+    
+    .title-div {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        overflow: hidden;
+        align-items: center;
+    
         > h1 {
             text-shadow: 12px 5px 4px $MUTED;
-            
-            animation: fadeIn ease 4s;
+            animation: fadeIn ease 2s;
         }
         > h4 {
-            animation-delay: 4s;
-            animation: fadeIn ease 6s;
+            animation: fadeIn ease 2s;
         }
     }
 }
 
-@keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-}

@@ -1,0 +1,54 @@
+@import 'src/variables';
+
+#navbar {
+    width: 600px;
+    margin: 0 auto;
+
+    // position: absolute;
+    // top: 80vh;
+    // left: 50%;
+    // transform: translateX(-50%);
+
+    transition: all 1s;
+
+    &.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        .nav-items {
+            background: white;
+        }
+    }
+    
+    .nav-items {
+        width:0;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-bottom: $DARK 1px solid;
+        transition: width .5s;
+
+        &.show {
+            width: 100%;
+        }
+
+        .nav-item {
+            margin: 10px 20px;
+            opacity: 0;
+            transition: opacity .5s;
+            &.show {
+                opacity: 1;
+                // animation: fadeIn ease 2s;
+            }
+        }
+        
+        @for $i from 1 through 4 {
+            .nav-item:nth-child(#{$i}n) {
+                transition-delay: #{$i * .1}s;
+            }
+        }
+    }
+}

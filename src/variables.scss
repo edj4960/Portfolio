@@ -3,3 +3,54 @@ $SECONDARY: #0EFFE2;
 $DARK: #353535;
 $MUTED: #D9D9D9;
 $LIGHT: #FFFFFF;
+
+@mixin keyframe-mixin($name, $start-entries, $end-entries) {
+    @keyframes #{$name} {
+        0% {
+            @each $property, $value in $start-entries {
+                #{$property}: $value;
+            }
+        }
+        100% {
+            @each $property, $value in $end-entries {
+                #{$property}: $value;
+            }
+        }
+    }
+}
+
+@mixin animation-mixin($key-frame, $duration, $fill-mode:ease, $delay:0, $fill-mode: forwards) {
+    
+    animation: #{$key-frame} $duration $fill-mode;
+    animation-fill-mode: $fill-mode;
+    animation-delay: 2s;
+    animation-play-state: paused
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@keyframes fadeOut {
+    0% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes expandIn {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes compress {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+    }
+}

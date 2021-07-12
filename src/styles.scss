@@ -23,12 +23,14 @@
 html, #root {
     // background-color: $DARK;
     ::-webkit-scrollbar {display:none;}
+    // @extend .bkgd-dark;
 }
 
 .app {
     @extend .font-primary;
     // margin: 0 100px;
     // width: 100%;
+
 }
 
 .content {

@@ -1,0 +1,32 @@
+@import 'src/variables';
+
+.examples-pg {
+    padding: 3rem 15rem;
+
+    .accent {
+        position: absolute;
+        width: 24rem;
+        -webkit-filter: drop-shadow( 0px 8px 10px rgba(0, 0, 0, .7));
+    }
+    .accent-1 {
+        right: 0;
+        top: 3rem;
+    }
+    .accent-2 {
+        left: 0;
+        bottom: 3rem;
+    }
+    .line-accent {
+        position: absolute;
+        left: -5rem;
+        top: 14rem;
+        fill-opacity: .6;
+    }
+
+    h1 {
+        text-shadow: 5px 5px 12px black;
+    
+
+    }
+
+}
