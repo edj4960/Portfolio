@@ -43,9 +43,13 @@
             margin: 10px 20px;
             opacity: 0;
             transition: opacity .5s;
+            cursor: pointer;
             &.show {
                 opacity: 1;
                 // animation: fadeIn ease 2s;
+            }
+            &.active {
+                color: $SECONDARY;
             }
         }
         
