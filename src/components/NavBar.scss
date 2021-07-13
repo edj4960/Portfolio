@@ -9,23 +9,29 @@
     // left: 50%;
     // transform: translateX(-50%);
 
-    transition: all 1s;
-
     &.sticky {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
+        // border-bottom: $DARK 1px solid;
+        // transition: width .5s;
+        
         .nav-items {
+            background: rgba($LIGHT, 0.9); 
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px -10px black;
             padding: 0 20px;
-            background: white;
             justify-content: flex-end;
             align-items: flex-end;
             height: 60px;
+            border-bottom: 5px solid rgba($MUTED, .4);
         }
     }
     
     .nav-items {
+        box-shadow: 0 10px 30px -10px rgba($LIGHT, 0);
+        transition: width .5s, box-shadow .25s;
         width:0;
         height: 40px;
         display: flex;

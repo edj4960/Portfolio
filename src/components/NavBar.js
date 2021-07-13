@@ -7,7 +7,7 @@ import Logo from './Logo';
 import { ABOUT_ME_NAME, MY_WORK_NAME, EXPERIENCE_NAME, CONTACT_NAME } from '../Constants';
 
 import { NAV_BAR_HEIGHT, 
-        NAV_BAR_ANIMATION_DELAY, 
+        STICKY_NAV_BAR_HEIGHT, 
         NAV_BAR_ITEMS_ANIMATION_DELAY } from '../Constants';
 
 import './NavBar.scss'
@@ -21,7 +21,7 @@ const NavItem = ({title, show, link}) => {
             to={link} 
             spy={true} 
             smooth={true} 
-            isDynamic={true}
+            offset={-NAV_BAR_HEIGHT}
         >
             {title}
         </Link>
@@ -100,7 +100,7 @@ const NavBar = () => {
     }
 
     return (
-    <div style={{height:NAV_BAR_HEIGHT}}>
+    <div style={{height:NAV_BAR_HEIGHT+20}}>
         <div 
             id="navbar" 
             style={{height:NAV_BAR_HEIGHT}}
