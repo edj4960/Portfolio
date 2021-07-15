@@ -4,11 +4,6 @@
     width: 600px;
     margin: 0 auto;
 
-    // position: absolute;
-    // top: 80vh;
-    // left: 50%;
-    // transform: translateX(-50%);
-
     &.sticky {
         position: fixed;
         top: 0;
@@ -18,14 +13,15 @@
         // transition: width .5s;
         
         .nav-items {
-            background: rgba($LIGHT, 0.9); 
+            background: rgba($MUTED, 0.6); 
             backdrop-filter: blur(15px);
-            box-shadow: 0 10px 30px -10px black;
+            box-shadow: 0 10px 30px -10px $DARK;
             padding: 0 20px;
             justify-content: flex-end;
             align-items: flex-end;
             height: 60px;
-            border-bottom: 5px solid rgba($MUTED, .4);
+            border: none;
+            // border-bottom: 5px solid rgba($MUTED, .4);
         }
     }
     
@@ -48,14 +44,17 @@
         .nav-item {
             margin: 10px 20px;
             opacity: 0;
-            transition: opacity .5s;
+            transition: all .5s;
             cursor: pointer;
             &.show {
                 opacity: 1;
                 // animation: fadeIn ease 2s;
             }
             &.active {
-                color: $SECONDARY;
+            }
+            // color: $SECONDARY;
+            &:hover {
+                text-decoration: underline;
             }
         }
         

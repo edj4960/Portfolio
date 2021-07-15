@@ -12,7 +12,23 @@ const About = () => {
             name={ABOUT_ME_NAME}
             className="about-me-pg"
         >
-            <h2>About Me</h2>
+            <div className="about-me-content">
+                <div className="title">
+                    <h2>About Me</h2>
+                </div>
+                <div className="text">
+                    <p>
+                        Hello! My name is Evan and I enjoy creating websites and apps.
+                        I have been developing software since 2018 and have loved every minute of it.
+                        On top of this I have create IOT software.
+                    </p>
+                    <p>
+                        Hello! My name is Evan and I enjoy creating websites and apps.
+                        I have been developing software since 2018 and have loved every minute of it.
+                        On top of this I have create IOT software.
+                    </p>
+                </div>
+            </div>
         </Element>
     )
 }

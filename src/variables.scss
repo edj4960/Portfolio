@@ -1,5 +1,11 @@
 $PRIMARY: #EB5757;
+
 $SECONDARY: #6FCF97;
+$SECONDARY-LIGHT1: lighten($SECONDARY, 10%);
+$SECONDARY-LIGHT2: lighten($SECONDARY, 20%);
+$SECONDARY-DARK1: darken($SECONDARY, 10%);
+$SECONDARY-DARK2: darken($SECONDARY, 20%);
+
 $DARK: #353535;
 $MUTED: #D9D9D9;
 $LIGHT: #FFFFFF;
@@ -25,6 +31,22 @@ $LIGHT: #FFFFFF;
     animation-fill-mode: $fill-mode;
     animation-delay: 2s;
     animation-play-state: paused
+}
+
+@function stripes($degrees, $entries) {
+    $stripes-value: '';
+    $position: 0;
+    
+    @each $color, $length in $entries {
+        @if $stripes-value == '' {
+            $stripes-value: $color
+        } @else {
+            $stripes-value: $stripes-value + ', ' + $color + ' ' + $position;
+        }
+        $position: $position + $length;
+        $stripes-value: $stripes-value + ', ' + $color + ' ' + $position;
+    }
+    @return repeating-linear-gradient($degrees, unquote($stripes-value));
 }
 
 @keyframes fadeIn {

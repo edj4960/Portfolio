@@ -39,7 +39,7 @@ const NavBar = () => {
         if (window.pageYOffset >= 500 && !sticky) {
             console.log("TRANSITIONING TO STICKY");
             transitionToSticky();
-        } else if (window.pageYOffset < 500 && sticky) {
+        } else if (window.pageYOffset < 250 && sticky) {
             console.log("TRANSITIONING TO NORMAL");
             transitionToNormal();
         }

@@ -16,7 +16,7 @@ const MyWork = () => {
             {/* <img className="accent accent-1" src={Accent1} />
             <img className="accent accent-2" src={Accent2} />
             <img clasName="line-accent" src={LineAccent1} /> */}
-            <h1 className="font-title text-xlg text-primary">My Work</h1>
+            <h2 className="">My Work</h2>
 
             <div style={{height: 5000}} />
             {/* <ExampleCard />

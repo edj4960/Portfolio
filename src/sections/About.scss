@@ -2,8 +2,38 @@
 
 .about-me-pg {
     // max-width: 1600px;
-    padding: 125px 200px;
-    background-color: $SECONDARY;
+    padding: 275px  200px;
+    background: repeating-linear-gradient(135deg, 
+    $SECONDARY-DARK1 0%, $SECONDARY 40%,
+    $SECONDARY-DARK1 40%, $SECONDARY-DARK1 60%,
+    $SECONDARY 60%, $SECONDARY-DARK1 100%);
+    box-shadow: inset 0 0 40px 40px $SECONDARY-DARK2;
+    background-attachment: fixed;
+    // background: stripes(135deg, ($SECONDARY 700px, $SECONDARY-DARK1 150px));
+    
     color: $LIGHT;
-
+    .about-me-content {
+        // background: linear-gradient($SECONDARY-DARK1, $SECONDARY);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+    
+        .title {
+            width: 20%;
+            h2 {
+                // width: 50px;
+                font-size: 70px;
+                text-align: right;
+                font-weight: bold;
+            }
+        }
+        .text {
+            width: 60%;
+            font-size: 18px;
+            // backdrop-filter: blur(15px);
+            // background: rgba($DARK, .1);
+        }
+    }
 }
