@@ -1,0 +1,272 @@
+@import 'src/variables';
+// .path {
+//   stroke-dasharray: 1000;
+// //   stroke-dashoffset: 1000;
+//   animation: dash 2s ease-in;
+// }
+
+// @keyframes dash {
+//     from {
+//         stroke-dashoffset: 1000;
+//     }
+//     to {
+//         stroke-dashoffset: 0;
+//     }
+// }
+
+// HTML CSSResult Skip Results Iframe
+
+$HEX_SPEED: 400ms;
+$DISAPPEAR_SPEED: 400ms;
+$STARTING_ROTATION: 210deg;
+$STARTING_DELAY: 0;
+
+// *, *::before, *::after {
+//   margin: 0 auto;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+body {
+  background: #ddd;
+  color: #aaa;
+}
+
+.logo-text {
+  text-align: center;
+  position: absolute;
+  margin: 0 auto;
+  z-index: 1000;
+  color: white;
+  font-family: 'Amaranth';
+  font-size: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 100%;
+  height: fit-content;
+  height: 0;
+  margin-top: 5px;
+  
+  animation: $HEX_SPEED displayLogo cubic-bezier(0.42, 0, 0.36, 1);
+  animation-delay: $HEX_SPEED*6;
+  animation-fill-mode: forwards;
+}
+
+@keyframes displayLogo {
+  0% {
+    height: 0;
+  }
+  85% {
+    height: 5.5rem;
+  }
+  100% {
+    height: 5rem;
+  }
+}
+
+#Top {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.hexagon {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-top: 100px;
+
+  animation: $DISAPPEAR_SPEED hexagonDisappear;
+  animation-delay: ($HEX_SPEED*8);
+  animation-fill-mode: forwards;
+}
+
+@keyframes hexagonDisappear {
+  0% {
+  }
+  20% {
+    transform:scale(1.2);
+  }
+  100% {
+    transform:scale(0);
+  }
+}
+
+.hexPlaceholders {
+  position: absolute;
+  top: 13.4px;
+  left: calc(50% - 50px);
+  width: 100px; 
+  height: 173.2px;
+  background-color: $SECONDARY;
+  
+  visibility: hidden;
+  animation: 1ms displayHex;
+  animation-fill-mode: forwards;
+  animation-delay: $HEX_SPEED*5;
+  transform: rotate(30deg);
+}
+
+@keyframes displayHex {
+    0% {
+      visibility: hidden;
+    }
+    100% {
+      z-index: 999;
+      visibility: visible;
+    }
+}
+
+.hexPlaceholders::before, .hexPlaceholders::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50;
+  height: 173.2px; 
+  border: solid transparent;
+  border-width: 86.6px 0;
+}
+
+.hexPlaceholders:before {
+  border-left: solid 50px $SECONDARY;
+  left: 100%;
+}
+
+.hexPlaceholders:after {
+  border-right: solid 50px $SECONDARY;
+  right: 100%;
+}
+
+.hexCont {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100px;
+  height: 200px;
+  perspective: 420px;
+  perspective-origin: 100px 100px;
+  transform-origin: 0px 100px;
+  animation: rotateCont ($HEX_SPEED * 6) steps(6,start);
+  animation-delay: $STARTING_DELAY;
+  transform: rotate(30deg);
+}
+
+.hexCont:nth-child(2) {
+  perspective-origin: 420px 100px;
+}
+
+@keyframes rotateCont {
+  from { transform: rotate(30deg); }
+  to { transform: rotate(390deg); }
+}
+
+.flipTriangle, .flipShadow, .triangleAfter  {
+  position: absolute;
+  top: 13.4px;
+  left: 0px;
+  width: 0px;
+  height: 0px;
+  border: solid transparent;
+  border-width: 0 50px;
+  transform-origin: bottom;
+}
+
+.triangleAfter {
+    transform-origin: bottom right;
+    
+    visibility: hidden;
+    animation: 1ms displayClass;
+    animation-fill-mode: forwards;
+    
+    &:nth-child(1) {
+        transform: rotateZ($STARTING_ROTATION);
+    }
+    &:nth-child(2) {
+        animation-delay: $HEX_SPEED;
+        transform: rotateZ($STARTING_ROTATION + 60deg);
+    }
+    &:nth-child(3) {
+        animation-delay: $HEX_SPEED*2;
+        transform: rotateZ($STARTING_ROTATION + 120deg);
+    }
+    &:nth-child(4) {
+        animation-delay: $HEX_SPEED*3;
+        transform: rotateZ($STARTING_ROTATION + 180deg);
+    }
+    &:nth-child(5) {
+        animation-delay: $HEX_SPEED*4;
+        transform: rotateZ($STARTING_ROTATION + 2400deg);
+    }
+    &:nth-child(6) {
+        animation-delay: ($HEX_SPEED*5);
+        transform: rotateZ($STARTING_ROTATION + 300deg);
+    }
+}
+
+@keyframes displayClass {
+    from {
+        visibility: hidden;
+    }
+    to {
+        visibility: visible;
+    }
+}
+
+.flipTriangle, .triangleAfter {
+    border-bottom: solid 86.6px $SECONDARY;
+    animation-delay: $STARTING_DELAY;
+}
+
+.flipTriangle {
+    animation: flipTriangle $HEX_SPEED ease-in-out;
+    animation-iteration-count: 5;
+    animation-delay: $STARTING_DELAY;
+            //  triablgeColor ($SPEED * 16) ($SPEED / -2) infinite steps(1,start);
+}
+
+@keyframes flipTriangle {
+    0% { transform: rotateX(0deg); }
+    100% {
+        transform: rotateX(-180deg);
+    }
+}
+
+.flipShadow {
+    border-bottom: solid 86.6px #0003;
+    animation: flipShadow $HEX_SPEED ease-in-out,
+                shadowBlur ($HEX_SPEED/ 2) alternate ease-in-out ; 
+    animation-iteration-count: 5, 9;
+    animation-delay: $STARTING_DELAY;
+    filter: blur(0px);
+    // filter: blur(10px); 
+}
+
+@keyframes flipShadow {
+  0% { transform: rotateX(0deg); }
+  100% { transform: rotateX(180deg); }
+}
+
+@keyframes shadowBlur {
+  from { filter: blur(0px); }
+  to { filter: blur(10px); }
+}
+
+// @keyframes triablgeColor {
+//   0%,100% { border-bottom: solid 86.6px #D50000; }
+//   6.25%   { border-bottom: solid 86.6px #C51162; }
+//   12.5%   { border-bottom: solid 86.6px #AA00FF; }
+//   18.75%  { border-bottom: solid 86.6px #6200EA; }
+//   25%     { border-bottom: solid 86.6px #304FFE; }
+//   31.25%  { border-bottom: solid 86.6px #2962FF; }
+//   37.5%   { border-bottom: solid 86.6px #0091EA; }
+//   43.75%  { border-bottom: solid 86.6px #00B8D4; }
+//   50%     { border-bottom: solid 86.6px #00BFA5; }
+//   56.25%  { border-bottom: solid 86.6px #00C853; }
+//   62.5%   { border-bottom: solid 86.6px #64DD17; }
+//   68.75%  { border-bottom: solid 86.6px #AEEA00; }
+//   75%     { border-bottom: solid 86.6px #FFD600; }
+//   81.25%  { border-bottom: solid 86.6px #FFAB00; }
+//   87.5%   { border-bottom: solid 86.6px #FF6D00; }
+//   93.75%  { border-bottom: solid 86.6px #DD2C00; }
+// }
