@@ -1,36 +1,9 @@
 @import 'src/variables';
-// .path {
-//   stroke-dasharray: 1000;
-// //   stroke-dashoffset: 1000;
-//   animation: dash 2s ease-in;
-// }
-
-// @keyframes dash {
-//     from {
-//         stroke-dashoffset: 1000;
-//     }
-//     to {
-//         stroke-dashoffset: 0;
-//     }
-// }
-
-// HTML CSSResult Skip Results Iframe
 
 $HEX_SPEED: 400ms;
-$DISAPPEAR_SPEED: 400ms;
+$DISAPPEAR_SPEED: $HEX_SPEED;
 $STARTING_ROTATION: 210deg;
-$STARTING_DELAY: 0;
-
-// *, *::before, *::after {
-//   margin: 0 auto;
-//   padding: 0;
-//   box-sizing: border-box;
-// }
-
-body {
-  background: #ddd;
-  color: #aaa;
-}
+$STARTING_DELAY: 500ms;
 
 .logo-text {
   text-align: center;
@@ -49,7 +22,7 @@ body {
   margin-top: 5px;
   
   animation: $HEX_SPEED displayLogo cubic-bezier(0.42, 0, 0.36, 1);
-  animation-delay: $HEX_SPEED*6;
+  animation-delay: ($HEX_SPEED*6) + $STARTING_DELAY;
   animation-fill-mode: forwards;
 }
 
@@ -71,6 +44,24 @@ body {
   right: 10px;
 }
 
+.hexagon-container {
+  animation: $STARTING_DELAY/2 enter;
+  animation-delay: $STARTING_DELAY/2;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .hexagon {
   position: relative;
   width: 200px;
@@ -78,7 +69,7 @@ body {
   margin-top: 100px;
 
   animation: $DISAPPEAR_SPEED hexagonDisappear;
-  animation-delay: ($HEX_SPEED*8);
+  animation-delay: ($HEX_SPEED*9) + $STARTING_DELAY;
   animation-fill-mode: forwards;
 }
 
@@ -99,12 +90,12 @@ body {
   left: calc(50% - 50px);
   width: 100px; 
   height: 173.2px;
-  background-color: $SECONDARY;
+  background-color: $PRIMARY;
   
   visibility: hidden;
   animation: 1ms displayHex;
   animation-fill-mode: forwards;
-  animation-delay: $HEX_SPEED*5;
+  animation-delay: ($HEX_SPEED*5) + $STARTING_DELAY;
   transform: rotate(30deg);
 }
 
@@ -129,12 +120,12 @@ body {
 }
 
 .hexPlaceholders:before {
-  border-left: solid 50px $SECONDARY;
+  border-left: solid 50px $PRIMARY;
   left: 100%;
 }
 
 .hexPlaceholders:after {
-  border-right: solid 50px $SECONDARY;
+  border-right: solid 50px $PRIMARY;
   right: 100%;
 }
 
@@ -149,16 +140,32 @@ body {
   transform-origin: 0px 100px;
   animation: rotateCont ($HEX_SPEED * 6) steps(6,start);
   animation-delay: $STARTING_DELAY;
-  transform: rotate(30deg);
+  transform: rotate(90deg);
 }
 
 .hexCont:nth-child(2) {
   perspective-origin: 420px 100px;
 }
 
+// .hexCont:nth-child(3) {
+//   animation: $HEX_SPEED initialFlip;
+//   // transform: rotate(0deg);
+// }
+
+// @keyframes initialFlip {
+//   0% {
+//     opacity: 0;
+//     // transform: rotateX(-90deg);
+//   }
+//   100% {
+//     opacity: 1;
+//     // transform: rotateX(-180deg);
+//   }
+// }
+
 @keyframes rotateCont {
-  from { transform: rotate(30deg); }
-  to { transform: rotate(390deg); }
+  0% { transform: rotate(30deg); }
+  100% { transform: rotate(390deg); }
 }
 
 .flipTriangle, .flipShadow, .triangleAfter  {
@@ -178,28 +185,29 @@ body {
     visibility: hidden;
     animation: 1ms displayClass;
     animation-fill-mode: forwards;
+    z-index: 500;
     
     &:nth-child(1) {
         transform: rotateZ($STARTING_ROTATION);
     }
     &:nth-child(2) {
-        animation-delay: $HEX_SPEED;
+        animation-delay: $STARTING_DELAY + $HEX_SPEED;
         transform: rotateZ($STARTING_ROTATION + 60deg);
     }
     &:nth-child(3) {
-        animation-delay: $HEX_SPEED*2;
+        animation-delay: $STARTING_DELAY + ($HEX_SPEED*2);
         transform: rotateZ($STARTING_ROTATION + 120deg);
     }
     &:nth-child(4) {
-        animation-delay: $HEX_SPEED*3;
+        animation-delay: $STARTING_DELAY + ($HEX_SPEED*3);
         transform: rotateZ($STARTING_ROTATION + 180deg);
     }
     &:nth-child(5) {
-        animation-delay: $HEX_SPEED*4;
+        animation-delay: $STARTING_DELAY + ($HEX_SPEED*4);
         transform: rotateZ($STARTING_ROTATION + 2400deg);
     }
     &:nth-child(6) {
-        animation-delay: ($HEX_SPEED*5);
+        animation-delay: $STARTING_DELAY + ($HEX_SPEED*5);
         transform: rotateZ($STARTING_ROTATION + 300deg);
     }
 }
@@ -214,7 +222,7 @@ body {
 }
 
 .flipTriangle, .triangleAfter {
-    border-bottom: solid 86.6px $SECONDARY;
+    border-bottom: solid 86.6px $PRIMARY;
     animation-delay: $STARTING_DELAY;
 }
 
@@ -222,6 +230,7 @@ body {
     animation: flipTriangle $HEX_SPEED ease-in-out;
     animation-iteration-count: 5;
     animation-delay: $STARTING_DELAY;
+    z-index: 500;
             //  triablgeColor ($SPEED * 16) ($SPEED / -2) infinite steps(1,start);
 }
 
@@ -239,6 +248,7 @@ body {
     animation-iteration-count: 5, 9;
     animation-delay: $STARTING_DELAY;
     filter: blur(0px);
+    // z-index: 400;
     // filter: blur(10px); 
 }
 
@@ -249,7 +259,7 @@ body {
 
 @keyframes shadowBlur {
   from { filter: blur(0px); }
-  to { filter: blur(10px); }
+  to { filter: blur(15px); }
 }
 
 // @keyframes triablgeColor {

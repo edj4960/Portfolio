@@ -1,7 +1,7 @@
 @import 'src/variables';
 
 #navbar {
-    width: 600px;
+    width: 100%;
     margin: 0 auto;
 
     &.sticky {
@@ -52,7 +52,7 @@
             }
             &.active {
             }
-            // color: $SECONDARY;
+            // color: $PRIMARY;
             &:hover {
                 text-decoration: underline;
             }

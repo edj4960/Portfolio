@@ -13,7 +13,7 @@ function App() {
       {/* <Intro /> */}
       {/* <NavBar/> */}
       <Logo2 />
-      <About />
+      {/* <About /> */}
       {/* <div style={{height: 500}} /> */}
       <MyWork />
     </div>

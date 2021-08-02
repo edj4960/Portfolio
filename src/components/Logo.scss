@@ -15,7 +15,7 @@
 
     &:hover {
         #E {
-            fill: $SECONDARY;
+            fill: $PRIMARY;
         }
         #J {
             fill: $DARK;
@@ -33,7 +33,7 @@
     #J {
         opacity: 0;
         transition: all ease 1s;
-        fill: $SECONDARY;
+        fill: $PRIMARY;
         animation: fadeInFromRight ease .25s;
         animation-delay: .25s;
         animation-fill-mode: forwards;

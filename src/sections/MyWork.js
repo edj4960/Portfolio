@@ -1,11 +1,10 @@
 import React from 'react';
+import { Link, Element, Events, } from 'react-scroll';
 
 // Components
-import ExampleCard from '../components/ExampleCard';
+import ProjectGrid from '../components/ProjectGrid';
 
-import { Link, Element, Events,  } from 'react-scroll';
-
-import { MY_WORK_NAME } from '../Constants';
+import { EXAMPLES, MY_WORK_NAME } from '../Constants';
 
 import './MyWork.scss'
 
@@ -17,10 +16,12 @@ const MyWork = () => {
             <img className="accent accent-2" src={Accent2} />
             <img clasName="line-accent" src={LineAccent1} /> */}
             <h2 className="">My Work</h2>
+            <br />
+            <ProjectGrid projects={EXAMPLES} />
 
-            <div style={{height: 5000}} />
-            {/* <ExampleCard />
-            <ExampleCard /> */}
+            <div style={{ height: 5000 }} />
+            {/* <ProjectCard />
+            <ProjectCard /> */}
         </Element>
     )
 }

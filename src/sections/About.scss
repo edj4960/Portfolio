@@ -4,16 +4,16 @@
     // max-width: 1600px;
     padding: 275px  200px;
     background: repeating-linear-gradient(135deg, 
-    $SECONDARY-DARK1 0%, $SECONDARY 40%,
-    $SECONDARY-DARK1 40%, $SECONDARY-DARK1 60%,
-    $SECONDARY 60%, $SECONDARY-DARK1 100%);
-    box-shadow: inset 0 0 40px 40px $SECONDARY-DARK2;
+    $PRIMARY-DARK1 0%, $PRIMARY 40%,
+    $PRIMARY-DARK1 40%, $PRIMARY-DARK1 60%,
+    $PRIMARY 60%, $PRIMARY-DARK1 100%);
+    box-shadow: inset 0 0 40px 40px $PRIMARY-DARK2;
     background-attachment: fixed;
-    // background: stripes(135deg, ($SECONDARY 700px, $SECONDARY-DARK1 150px));
+    // background: stripes(135deg, ($PRIMARY 700px, $PRIMARY-DARK1 150px));
     
     color: $LIGHT;
     .about-me-content {
-        // background: linear-gradient($SECONDARY-DARK1, $SECONDARY);
+        // background: linear-gradient($PRIMARY-DARK1, $PRIMARY);
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
