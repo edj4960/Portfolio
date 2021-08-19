@@ -1,0 +1,90 @@
+@import 'src/variables';
+
+$transition-speed: 250ms;
+
+@function hex-height($height) {
+  @return #{($height)/2}px;
+}
+
+@function hex-len($height) {
+  @return #{($height)/3}px;
+}
+
+@mixin hex-button($height, $half-height, $third-height, $color) {
+  height: $height;
+
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0; 
+    top:0;
+    
+    border-top: $half-height solid transparent;
+    border-bottom: $half-height solid transparent;
+  }
+
+  &::before {
+    left:- $third-height;
+    border-right:$third-height solid $color; 
+    transition: border-right-color $transition-speed;
+  }
+
+  &::after {
+    right:- $third-height;
+    border-left:$third-height solid $color;
+    transition: border-left-color $transition-speed;
+  }
+}
+
+@mixin hex-btn-color($color) {
+  background-color: $color;
+
+  &::before {
+    border-right-color: $color; 
+  }
+
+  &::after {
+    border-left-color: $color; 
+  }
+}
+
+.hex-btn-div {
+  width: fit-content;
+  margin: 0 auto;
+  &:hover {
+    .hex-btn {
+      box-shadow: 0px 5px 25px lighten($SECONDARY, 0%);
+
+      transform: translate(0px, -5px);
+      // border: none;
+      // border-left: 1px solid $SECONDARY;
+    }
+  }
+}
+
+
+.hex-btn {
+  cursor: pointer;
+  background-color: $SECONDARY;
+  color: $LIGHT;
+  font-family: 'Rajdhani';
+  box-sizing: border-box;
+  position:relative;
+  border: none;
+  font-weight: 700;
+  font-size: 24px;
+  transition: box-shadow 200ms ease-out,
+    transform 200ms ease-out;
+  
+  
+  @include hex-button(60px, 30px, 20px, $SECONDARY);
+  
+  &:active, &:focus {
+    outline: none;
+  }
+  
+  // box-shadow: 0px 2px 25px black;
+  // display: flex;
+  // align-items: center;
+}

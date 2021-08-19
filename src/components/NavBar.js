@@ -1,121 +1,87 @@
 import React, { useState, useEffect } from 'react';
+import { Link, Element, Events, } from 'react-scroll';
+import { Fade } from 'react-reveal';
 
-import { Link, Element, Events,  } from 'react-scroll';
-
-import Logo from './Logo';
+import { ReactComponent as Logo } from '../assets/Logo.svg';
+import HexBtnAn from './HexBtnAn';
+import Cascade from './Cascade';
 
 import { ABOUT_ME_NAME, MY_WORK_NAME, EXPERIENCE_NAME, CONTACT_NAME } from '../Constants';
-
-import { NAV_BAR_HEIGHT, 
-        STICKY_NAV_BAR_HEIGHT, 
-        NAV_BAR_ITEMS_ANIMATION_DELAY } from '../Constants';
+import {
+	NAV_BAR_HEIGHT,
+	STICKY_NAV_BAR_HEIGHT,
+	NAV_BAR_ITEMS_ANIMATION_DELAY
+} from '../Constants';
 
 import './NavBar.scss'
 
-const NavItem = ({title, show, link}) => {
+const NavItem = props => {
+	const { title, link, width, index } = { ...props }
 
-    return (
-        <Link 
-            className={`nav-item ${show&&'show'}`} 
-            activeClass="active"
-            to={link} 
-            spy={true} 
-            smooth={true} 
-            offset={-NAV_BAR_HEIGHT}
-        >
-            {title}
-        </Link>
-    )
+	return (
+		<Cascade showIndex={index} style={{ minWidth: 225, textAlign: 'center' }} fade top>
+			<Link
+				className='nav-item'
+				activeClass="active"
+				to={link}
+				spy={true}
+				smooth={true}
+				offset={-NAV_BAR_HEIGHT}
+				{...props}
+			>
+				<HexBtnAn title={title} width={width} />
+			</Link>
+		</Cascade>
+	)
 }
 
 const NavBar = () => {
-    const [sticky, setSticky] = useState(false);
-    const [navbarOffset, setNavbarOffset] = useState(0);
-    const [showNavBar, setShowNavBar] = useState(false);
-    const [showNavItems, setShowNavItems] = useState(false);
-    
-    
-    const handleScroll = () => {
-        if (window.pageYOffset >= 500 && !sticky) {
-            console.log("TRANSITIONING TO STICKY");
-            transitionToSticky();
-        } else if (window.pageYOffset < 250 && sticky) {
-            console.log("TRANSITIONING TO NORMAL");
-            transitionToNormal();
-        }
-    };
-    
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [navbarOffset, sticky]);
-    
-    useEffect(() => {
-        const navbar = document.getElementById("navbar");
-        setNavbarOffset(navbar.offsetTop);
-    }, []);
+	const [sticky, setSticky] = useState(false);
+	const [navbarOffset, setNavbarOffset] = useState(0);
+	const [showNavBar, setShowNavBar] = useState(false);
+	const [prevScroll, setPrevScroll] = useState(0);
 
-    // Animations
-    useEffect(() => {
-        if (window.pageYOffset >= 500) {
-            setSticky(true);
-            runShowNavBar();
-        } else {
-            setTimeout(() => {
-                runShowNavBar();
-            }, 1000);
-        }
-    }, []);
+	useEffect(() => {
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, [navbarOffset, prevScroll]);
 
-    const transitionToSticky = () => {
-        runHideNavBar();
-        setTimeout(() => {
-            setSticky(true);
-            runShowNavBar();
-        }, 1000);
-    }
+	useEffect(() => {
+		const navbar = document.getElementById("navbar");
+		setNavbarOffset(navbar.offsetTop);
+		setPrevScroll(window.scrollY);
+	}, []);
 
-    const transitionToNormal = () => {
-        runHideNavBar();
-        setTimeout(() => {
-            setSticky(false);
-            setTimeout(() => {
-                runShowNavBar();
-            },500);
-        }, 1000);
-    }
-    
-    const runShowNavBar = () => {
-        setShowNavBar(true);
-        setTimeout(() => {
-            setShowNavItems(true);
-        }, 500)
-    };
+	const handleScroll = () => {
+		// const navbar = document.getElementById("navbar");
+		// const scrollY = window.scrollY;
 
-    const runHideNavBar = () => {
-        setShowNavItems(false);
-        setTimeout(() => {
-            setShowNavBar(false);
-        }, 500);
-    }
+		// if (navbar.offsetTop < window.scrollY + 20) {
+		// 	setSticky(true);
+		// } else if (navbar.offsetTop > window.scrollY + 80) {
+		// 	setSticky(false);
+		// }
 
-    return (
-    <div style={{height:NAV_BAR_HEIGHT+20}}>
-        <div 
-            id="navbar" 
-            style={{height:NAV_BAR_HEIGHT}}
-            className={sticky&&'sticky'}
-        >
-            <div className={`nav-items ${showNavBar&&'show'}`}>
-                {(sticky&&showNavBar)&&<Logo />}
-                <NavItem title="About Me" show={showNavItems} link={ABOUT_ME_NAME} />
-                <NavItem title="My Work" show={showNavItems} link={MY_WORK_NAME} />
-                <NavItem title="Experience" show={showNavItems} link={EXPERIENCE_NAME} />
-                <NavItem title="Contact" show={showNavItems} link={CONTACT_NAME} />
-            </div>
-        </div>
-    </div>
-    )
+		// console.log(scrollY, prevScroll);
+		// if (scrollY < prevScroll) {
+		// 	setShowNavBar(true);
+		// } else if (scrollY > prevScroll) {
+		// 	setShowNavBar(false);
+		// }
+
+		// setPrevScroll(scrollY);
+	}
+
+	return (
+		<div id="navbar" className={sticky ? 'sticky' : ''}>
+			<div className={`navbar-inner ${!showNavBar ? 'hide' : ''}`}>
+				<NavItem title="About Me" width={160} link={ABOUT_ME_NAME} index={4} />
+				<NavItem title="My Work" width={150} link={MY_WORK_NAME} index={5} />
+				<NavItem title="Experience" width={185} link={EXPERIENCE_NAME} index={6} />
+				<NavItem title="Contact" width={145} link={CONTACT_NAME} index={7} />
+			</div>
+		</div>
+	)
 }
 
 export default NavBar;

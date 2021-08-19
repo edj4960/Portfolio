@@ -1,0 +1,69 @@
+@import 'src/variables';
+
+.hex-btn-svg {
+  transform: scale(.65);
+}
+
+.hex-btn-g {
+  &:hover {
+    .hex-btn-animated {
+
+    }
+  }
+}
+
+.hex-btn-animated {
+  transform-origin: left;
+  transform: rotate(-30deg);
+  animation: rotate-hex-btn 300ms forwards;
+  transform-origin: center;
+  animation-delay: 1s;
+
+  width: 0;
+  stroke: $PRIMARY;
+  stroke-width: 7;
+  fill: rgba(white, 0);
+}
+
+.hex-btn-txt {
+  font-size: 34px;
+  fill: $PRIMARY;
+  font-weight: bold;
+  font-family: 'Amaranth';
+  display: block;
+
+  animation: anim-hex-text 1000ms forwards;
+  animation-delay: 1000ms;
+  transform: translateX(2px);
+}
+
+.btn-text {
+  font-family: 'Rajdhani';
+}
+
+@keyframes rotate-hex-btn {
+  0% {
+    transform: rotate(-30deg);
+    stroke-width: 7;
+  }
+  60% {
+    // transform: rotate(-40deg);
+    // strokeWidth: 2;
+  }
+  100% {
+    transform: rotate(0deg);
+    stroke-width: 5;
+  }
+}
+
+@keyframes anim-hex-text {
+  0% {
+    transform: translateX(2px);
+  }
+  20% {
+    transform: translateX(6px);
+  }
+  100% {
+    transform: translateX(12px);
+  }
+}

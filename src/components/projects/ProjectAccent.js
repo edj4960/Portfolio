@@ -13,7 +13,7 @@ const ProjectAccent = ({ width }) => {
                 xs={width || "100%"}
                 y2="0"
                 stroke="white"
-                stroke-width=".5"
+                strokeWidth=".5"
             >
                 <animate
                     attributeName="x2"
@@ -30,7 +30,7 @@ const ProjectAccent = ({ width }) => {
                     fill="freeze"
                 />
                 <animate
-                    attributeName="stroke-width"
+                    attributeName="strokeWidth"
                     begin={`${ANIM_DELAY + ANIM_LENGTH_DUR}ms`}
                     values=".5;1;"
                     dur={`${ANIM_WIDTH_DUR}ms`}

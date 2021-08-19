@@ -7,10 +7,12 @@ import ProjectAccent from './ProjectAccent';
 
 import './ProjectCard.scss';
 
-const ProjectCard = ({ title, company, description, technologies }) => {
+const ProjectCard = props => {
+
+    const { title, company, description, technologies } = { ...props };
 
     return (
-        <div className="project-card">
+        <div className="project-card" {...props}>
             <div className="project-inner">
                 <header>
                     <div className="project-top">

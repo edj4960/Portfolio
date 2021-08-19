@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Element, Events, } from 'react-scroll';
 
 // Components
-import ProjectGrid from '../components/ProjectGrid';
+import ProjectGrid from '../components/projects/ProjectGrid';
 
 import { EXAMPLES, MY_WORK_NAME } from '../Constants';
 

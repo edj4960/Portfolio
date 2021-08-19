@@ -1,40 +1,61 @@
 import React, { useState, useEffect } from 'react';
 
-import Divider from '../components/Divider';
 import NavBar from '../components/NavBar';
 
 import './Intro.scss'
 import { NAV_BAR_HEIGHT } from '../Constants';
+import { Fade } from 'react-reveal';
+import { ReactComponent as HexFilled } from '../assets/HexFilled.svg';
+import Title from '../components/intro/Title';
+
+import Hex from '../components/Hex';
+import HexBtn from '../components/HexBtn';
+
+import HexBtnAn from '../components/HexBtnAn';
+import Cascade from '../components/Cascade';
+import HexBackground from '../assets/HexBackground.svg';
 
 const Intro = () => {
-    // const [offsetY, setOffsetY] = useState(0);
-    const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
-    // const handleScroll = () => setOffsetY(window.pageYOffset);
-    const handleResize = () => setWindowHeight(window.innerHeight);
+	return (
+		<div className="intro-pg">
+			<Cascade top fade showIndex={0}>
+				<div
+					className="intro-pg-inner"
+					style={{
+						height: '100%',
+						background: `url(${HexBackground})`,
+						backgroundPosition: '130% 20%',
+						backgroundRepeat: 'no-repeat'
 
-    // Event Listeners
-    useEffect(() => {
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
+					}}
+				>
+					<div className="title-div">
+						<div className="title-inner">
+							<Hex x="0px" y="-150px" />
+							<Hex className="hex-right" />
 
-    // useEffect(() => {
-    //     window.addEventListener("scroll", handleScroll);
-    //     return () => window.removeEventListener("scroll", handleScroll);
-    // }, []);
+							<Title />
+							<div className="sub-title" />
 
-    return (
-        <div className="intro-pg">
-            <div 
-                className="title-div"
-                style={{height: `${windowHeight-NAV_BAR_HEIGHT-20}px`}}
-            >
-                <h1 className="text-xlg font-title">Evan Jones</h1>
-                <h4>Full-Stack React and NodeJS Developer</h4>
-            </div>
-        </div>
-    )
+							<Cascade top fade showIndex={0}>
+								<h1>Evan Jones</h1>
+							</Cascade>
+							<Cascade bottom fade showIndex={0}>
+								<h2>Full-Stack React and NodeJS Developer</h2>
+							</Cascade>
+
+						</div>
+						<Cascade bottom fade showIndex={2}>
+							<HexBtn center>
+								Let's Build Something
+							</HexBtn>
+						</Cascade>
+					</div>
+				</div>
+			</Cascade>
+		</div>
+	)
 }
 
 export default Intro;

@@ -1,20 +1,31 @@
-import React from 'react';
-import {animateScroll as scroll} from 'react-scroll'
+import React from 'react'
+// import Triangle from '../assets/Triangle.svg';
 
-import "./Logo.scss";
+import LogoText from '../assets/LogoText.svg'
 
-const Logo = ({height=35, hide=false}) => {
+import './Logo.scss';
 
+const Logo = () => {
     return (
-        <div 
-            id="logo" 
-            className={hide&&"test"}
-            onClick={() => scroll.scrollToTop()}
-        >
-            <svg height={height} viewBox="0 0 6 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path id="E" d="M0 5V0H3V1H1.00567V2H3V3H1.00567V4H3V5H0Z" fill="#353535"/>
-                <path id="J" d="M1 0H2V4H0V3H1V0Z"/>
-            </svg>
+        <div className="hexagon-container">
+            <div className="hexagon">
+                <div className="remainingTriangles">
+                    <div class="triangleAfter"></div>
+                    <div class="triangleAfter"></div>
+                    <div class="triangleAfter"></div>
+                    <div class="triangleAfter"></div>
+                    <div class="triangleAfter"></div>
+                    <div class="triangleAfter"></div>
+                </div>
+                <div className="hexCont">
+                    <div className="flipShadow"></div>
+                </div>
+                <div className="hexCont">
+                    <div className="flipTriangle"></div>
+                </div>
+                <div className="hexPlaceholders"></div>
+                <img className="logo-text" src={LogoText} />
+            </div>
         </div>
     )
 }

@@ -1,0 +1,42 @@
+$SPEED: 300ms;
+
+.cascade {
+  &.fade-in.top {
+    opacity: 0;
+    animation: fade-in ease-out $SPEED forwards,
+      top ease-out $SPEED forwards;;
+  }
+  
+  &.fade-in.bottom {
+    opacity: 0;
+    animation: fade-in ease-out $SPEED forwards,
+      bottom ease-out $SPEED forwards;;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes top {
+  0% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes bottom {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
